@@ -5,20 +5,40 @@ import './App.css'
 function Country() {
     const [country, setCountry] = useState([])
 
-    const fetchData = () => {
-        axios.get("https://restcountries.com/v3.1/all").then((res) => {
-            console.log(res.data)
-            setCountry(res.data)
-        }).catch((err) => {
-            console.log(err);
-        })
+    // Method - 1
 
+     // const fetchData = () => {
+    //     axios.get("https://restcountries.com/v3.1/all").then((res) => {
+    //     console.log(res.data)
+    //     setCountry(res.data)
+    //     }).catch((err) => {
+    //         console.log(err);
+    //     })
+    // }
+    
+    
+    // Method - 2
+    
+    // const fetchData = () => {
+    //     fetch("https://restcountries.com/v3.1/all").then(response =>{
+    //         return response.json()
+    //     }).then(data=>{
+    //         setCountry(data)
+    //     })
+    // }
+   
+
+    // Method - 3
+
+    const fetchData = async () => {
+            const response = await fetch("https://restcountries.com/v3.1/all")
+            const data = await response.json()
+            setCountry(data)
     }
 
     useEffect(() => {
         fetchData()
-
-    })
+    },[])
 
         return (
             <>
