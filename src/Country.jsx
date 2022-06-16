@@ -3,13 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './App.css'
 
 function Country() {
-    const [country, setCountry] = useState()
-
-
-    useEffect(() => {
-        fetchData()
-
-    }, [])
+    const [country, setCountry] = useState([])
 
     const fetchData = () => {
         axios.get("https://restcountries.com/v3.1/all").then((res) => {
@@ -20,6 +14,12 @@ function Country() {
         })
 
     }
+
+    useEffect(() => {
+        fetchData()
+
+    })
+
         return (
             <>
                 <h1>COUNTRY DETAILS</h1>
